@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.popedom.mapper.UserMapper">
+	<insert id="registUser" parameterType="User">
+		insert into t_user (user_id,user_name,user_password,role_id,father_id)
+		 values (#{userId},#{userName},#{userPassword},#{roleId},#{fatherId}) 
+	</insert>
+	<select id="getUserId2" parameterType="String" resultType="String">
+		select user_id from t_user where user_name=#{major}
+	</select>
+	<select id="getRoleId2" parameterType="String" resultType="Integer">
+		select role_id from t_role where role_name=#{roleName}
+	</select>
+	
+	<select id="getFatherrole" parameterType="String" resultType="Integer">
+		select father_role from t_role where role_name=#{roleName}
+	</select>
+	<select id="getUserName" parameterType="Integer" resultType="String">
+		select user_name from t_user where role_id=#{fatherRole}
+	</select>
+</mapper>
